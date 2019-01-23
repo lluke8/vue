@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#app',
     data: {
         product: 'Socks',
-        image: './sock.jpeg',
+        image: './greensock.jpeg',
         link: 'https://www.google.com/search?q=socks&oq=socks&aqs=chrome..69i57j69i60l3j69i61j0.411j0j7&sourceid=chrome&ie=UTF-8',
         altText: 'Some sock.',
         inStock: true,
@@ -10,14 +10,28 @@ var app = new Vue({
         details: ["80% cotton", "20% polyster", "Gender-neutral"],
         variants: [{
             variandId: 2234,
-            variantColor: 'Green'
+            variantColor: 'Green',
+            variantImage: './greensock.jpeg'
         },
         {
             variantId: 2235,
-            variantColor: 'Blue'
+            variantColor: 'Blue',
+            variantImage: './bluesock.jpeg'
         }],
-        sizes: [ "S", "L", "M", "XL"]
-        
+        sizes: [ "S", "L", "M", "XL"],
+        cart: 0
+    },
+    methods: {
+        addToCart: function(){
+            this.cart += 1
+        },
+        updateProduct(variantImage){
+            this.image = variantImage
+        },
+        removeFromCart(){
+            if(this.cart > 0)
+            this.cart -= 1
+        }
     }
 
 })
